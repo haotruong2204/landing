@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>WaniKani — Log in</title>
+  <link rel="stylesheet" href="css/checkout.css" media="screen" />
+  <link rel="stylesheet" href="css/style.css" media="screen" />
+  <meta name="application-name" content="Tho code hoc tieng Nhat">
+  <meta name="author" content="thocodehoctiengnhat">
+  <meta name="description" content="Hành trình học tiếng Nhật mỗi ngày của anh thợ code">
+  <meta name="keywords" content="japanese kanji, japanese language, japanese learning, kanji, radicals, kanji radicals, japanese vocabulary, vocabulary, srs, spaced repetition, mnemonics, memory tricks, web app, vo luyen kanji, but luyen viet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="google" value="notranslate">
+  <!-- Open Graph data -->
+  <meta property="fb:app_id" content="1330163157828284" />
+  <meta content='Hành trình học tiếng Nhật mỗi ngày của anh thợ code' property='og:description'>
+  <meta content='./images/social-media-image.jpeg' property='og:image'>
+  <meta content='vi_VN' property='og:locale'>
+  <meta content='thocodehoctiengnhat' property='og:site_name'>
+  <meta content='A kanji learning application by Tho Code Hoc Tieng Nhat' property='og:title'>
+  <meta content='website' property='og:type'>
+  <meta content='https://luyenkanji.com/' property='og:url'>
+  <meta content='https://luyenkanji.com' property='og:see_also'>
+
+  <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
+  <link rel="icon" type="image/png" href="./images/icon-196.png" sizes="196x196" />
+  <link rel="icon" type="image/png" href="./images/icon-128.png" sizes="128x128" />
+  <link rel="apple-touch-icon" type="image/png" href="./images/icon-128.png" sizes="128x128" />
+  <link rel="apple-touch-icon-precomposed" type="image/png" href="./images/icon-128.png" sizes="128x128" />
+</head>
+
+<body>
+  
+<section class="checkout booking">
+  <div class="wrapper">
+    <form id="booking" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeiSpX9lC4zDiYOUfYqke0Mf8sCwgewDwNgvfqq9kYE4VCAjw/formResponse">
+      <input required placeholder="Họ tên" name="entry.1884182194" tabindex="1" maxlength="255" size="255" type="text" />
+      <input required placeholder="Số điện thoại" name="entry.1462180605" tabindex="2" maxlength="255" size="255" type="text"  />
+      <input required placeholder="Thành Phố/Tỉnh" name="entry.1561782523" tabindex="3" maxlength="255" size="255" type="text" />
+      <input required placeholder="Quận/Huyện" name="entry.1033586263" tabindex="4" maxlength="255" size="255" type="text" />
+      <input required name="entry.2034616347" placeholder="Xã/Phường" tabindex="5" maxlength="255" size="255" type="text" />
+      <textarea name="entry.1741927713" required name="" id="" cols="30" tabindex="6" rows="10" placeholder="Địa chỉ số nhà, thôn xóm, ..." ></textarea>
+      <input id="quantity" required name="entry.1260711618" placeholder="Số lượng vở" tabindex="7" maxlength="255" size="255" type="number" />
+      <input required placeholder="Đơn giá: 79,000 vnđ" maxlength="255" size="255" type="text" class="disabled" disabled/>
+      <input required placeholder="Phí ship: 20,000 vnđ" maxlength="255" size="255" type="text" class="disabled" disabled/>
+      <input id="total" required name="entry.161677275" placeholder="Thành tiền" maxlength="255" size="255" type="text" class="disabled" disabled/>
+      <button type="submit" class="button" tabindex="8">
+        Đặt hàng 
+      </button>      
+    </form>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+  $('#quantity').on('keyup', function(e){
+    e.preventDefault();
+
+    $("#total").val(`tổng tiền: ${($(this).val() * 79000 + 20000).toLocaleString()} vnđ`)
+  })
+
+  $('#booking').on('submit',function(e){
+    e.preventDefault();
+    var that = $(this);
+    var unindexed_array = that.serializeArray();
+    var indexed_array = {};
+    $.map(unindexed_array, function(n, i){
+      indexed_array[n['name']] = n['value'];
+    });
+    console.log(indexed_array);
+    var urlResponse = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeiSpX9lC4zDiYOUfYqke0Mf8sCwgewDwNgvfqq9kYE4VCAjw/formResponse"
+    $.ajax({
+      type: 'POST',
+      url: urlResponse,
+      async : false,
+      data: indexed_array,
+      dataType: 'json',
+      complete: function() {
+        swal("Đặt hàng thành công!", "Cảm ơn bạn rất nhiều!", "success");
+        that.trigger('reset');
+      },
+      error: function(XMLHttpRequest, textStatus) {
+      }
+    });
+  });
+</script>
+</body>
+</html>
