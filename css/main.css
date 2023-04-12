@@ -300,7 +300,7 @@ h6 {
 }
 @media (min-width: 550px) {
   h1 {
-    font-size: 5rem;
+    font-size: 4rem;
   }
   h2 {
     font-size: 4.2rem;
@@ -984,6 +984,13 @@ footer a:hover {
   display: none;
 }
 @media (max-width: 550px) {
+  #testimonials,
+  #explanation {
+    padding-top: 0;
+  }
+  #explanation #explanation-list ul li {
+    margin: 0 0 60px;
+  }
   h1 {
     font-size: 2rem;
   }
@@ -1000,8 +1007,13 @@ footer a:hover {
     margin-top: 0.75rem;
   }
   nav ul li:first-child img {
-    max-width: 125px;
+    max-width: 60px;
     height: auto;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 @media (min-width: 551px) and (max-width: 768px) {
