@@ -34,3 +34,36 @@
 .jobs {
   display: flex;
 }
+
+.wrapper.flashcard {
+  display: inline-block;
+  margin-bottom: 2rem;
+  width: 320px;
+}
+
+.flashcard h3 {
+  background: #ec505b;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.home {
+  position: relative;
+  top: 4px;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.home a {
+  background-color: #ffffff;
+  margin-right: 0;
+  padding: 0.5rem 1rem;
+  color: #167475;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  text-decoration: none;
+}

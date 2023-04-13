@@ -647,7 +647,7 @@ section.checkout.forgot-password:before {
 section.checkout.booking:before {
   background-image: url(../images/sign-in.png);
 }
-section.checkout.signup:before {
+section.checkout.flashcard:before {
   background-image: url(../images/sign-up.png);
 }
 form {
@@ -741,7 +741,7 @@ form label {
   section.checkout.booking:before {
     background-image: url(../images/sign-in-@2x.png);
   }
-  section.checkout.signup:before {
+  section.checkout.flashcard:before {
     background-image: url(../images/sign-up-@2x.png);
   }
 }
