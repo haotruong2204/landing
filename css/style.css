@@ -67,3 +67,7 @@
   border-radius: 5px;
   text-decoration: none;
 }
+
+::placeholder {
+  color: #2f2f2f;
+}
